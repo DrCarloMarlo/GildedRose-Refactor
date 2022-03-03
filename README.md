@@ -32,6 +32,7 @@ composer install
         - `Types.php` - abstract class for items
     - `Item.php` - immutable item class, goblin will be happy
     - `GildedRose.php` - a class containing a method for handling item counting
+    - `Conditions.php` - class containing an array of conditions for selecting a handler
     - `autoload.php` - autoloader for used classes
 - `tests` - contains the tests
     - `GildedRoseTest.php` - test, contains DataProvider.

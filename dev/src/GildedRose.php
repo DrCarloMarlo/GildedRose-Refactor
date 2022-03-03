@@ -13,23 +13,10 @@ final class GildedRose
      */
     private $items;
 
-    /**
-     * @var array specialized[string $modificator => string $className, ...]
-     *
-     * Комменатрий соискателя: в случае роста кол-ва условий желательна переделка в класс каталог
-     */
-    private static $specialized = [
-        'Aged Brie' => 'Brie',
-        'Backstage passes' => 'Backstage',
-        'Conjured' => 'Conjured',
-        'Sulfuras' => 'Legendary',
-    ];
-
     public function __construct(array $items)
     {
         $this->items = $items;
     }
-
 
     /*
      * Комменатрий соискателя: для реализации метода использован подход "табличного метода Макконнела"
@@ -38,12 +25,12 @@ final class GildedRose
     */
     public function updateQuality(): void
     {
-        $classItem = 'Normal';
+        $conditions = new Conditions();
+        $classItem = $conditions::$defaultClass;
         foreach ($this->items as $key => $item) {
-            //$classItem = 'Normal';
-            foreach (self::$specialized as $special => $class) {
+            foreach ($conditions->getConditionsKey() as $special) {
                 if (str_contains($item->name, $special)) {
-                    $classItem = $class;
+                    $classItem = $conditions->getHandlerClass_Name($special);
                 }
             }
             $instance = new $classItem();
