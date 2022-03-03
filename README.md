@@ -16,7 +16,7 @@ git clone git@github.com:DrCarloMarlo/GildedRose-Refactor.git
 Install composer
 
 ```shell script
-cd ./dev/GildedRose-Refactor
+cd ./GildedRose-Refactor/dev
 composer install
 ```
 
